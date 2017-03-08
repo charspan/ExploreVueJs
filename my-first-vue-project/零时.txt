@@ -1,0 +1,28 @@
+http://www.imooc.com/video/12299
+
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+cnpm install -g vue-cli  
+
+http://cn.vuejs.org/v2/guide/installation.html#命令行工具
+
+vue init webpack my-first-vue-project
+
+依赖
+
+cnpm install
+
+
+跑一下
+
+cnpm run dev
+
+
+执行cnpm run dev时候报以下错误
+To use this template, you must update following to modules:    npm: 2.15.1 should be >= 3.0.0
+解：cmd 中执行 
+把npm升级一下就可以了，npm install npm@latest -g 这句命令行就是升级到最新版的npm
+
+
+npm install npm@latest -g
