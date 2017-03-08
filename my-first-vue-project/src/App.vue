@@ -8,6 +8,8 @@
 <script>
 // import 是 es6 的语法
 import Hello from './components/Hello'
+// import Store from './Store'
+// console.log(Store);
 // 类似 module.export = { }
 // export 项目会自动生成 new Vue({})
 export default {

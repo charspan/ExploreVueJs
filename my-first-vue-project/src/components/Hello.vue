@@ -4,10 +4,14 @@
     <h1>{{ msg }}</h1>
     <!-- v-bind:class 简写:class="[XXX]" 也能取值-->
     <p :class="[pClass]">{{pClass}}</p>
+    
+    <input v-model="watchTest">
+    <br>
     <input v-model="newItem" v-on:keyup.enter="addNew">
     <ul>
       <!-- v-for 用法 -->
-      <li v-for="item in items" v-bind:class="{finished: item.isFinished}" v-on:click="toggleFinish(item)">
+      <li v-for="item in items" v-bind:class="{finished: item.isFinished}" 
+      v-on:click="toggleFinish(item)">
         {{item.label}}
       </li>
     </ul>
@@ -31,7 +35,7 @@
 </template>
 
 <script>
-import Store from '../store'
+import Store from '../Store'
 export default {
   name: 'hello',
 // function data(){
@@ -44,25 +48,30 @@ export default {
       msg: 'Welcome to Your Vue.js App',
       // 返回一个数组
       items: [
-        // {
-        //   label: 'coding',
-        //   isFinished: false
-        // },
-        // {
-        //   label: 'walking',
-        //   isFinished: true
-        // }
+        {
+          label: 'coding',
+          isFinished: false
+        },
+        {
+          label: 'walking',
+          isFinished: true
+        }
       ],
       pClass: 'myP',
-      newItem: ''
+      newItem: '',
+      watchTest: 'watchTest'
     }
   },
   watch: {
-    msg: {},
+    watchTest: {
+       handler: function(val,oldVal){
+        console.log("val="+val+",oldVal="+oldVal);
+      }
+    },
     items: {
        handler: function(val,oldVal){
         Store.save(val);
-        console.log(Store);
+        //console.log(Store);
       },
       deep:true //深层复制
     }
@@ -78,7 +87,7 @@ export default {
     // }
   },
   // 方法一定要写在这里
-  methods:{
+  methods: {
     toggleFinish: function(item){
       item.isFinished=!item.isFinished;
       //console.log(item);
