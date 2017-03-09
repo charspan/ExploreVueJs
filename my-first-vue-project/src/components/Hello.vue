@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Store from '../Store'
+import Store from '../store'
 export default {
   name: 'hello',
 // function data(){
@@ -43,29 +43,35 @@ export default {
 //       msg: 'Welcome to Your Vue.js App'
 //     }
 // }
+//疑问不加也可以
+ // components: {
+ //      Store
+ //  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       // 返回一个数组
-      items: [
-        {
-          label: 'coding',
-          isFinished: false
-        },
-        {
-          label: 'walking',
-          isFinished: true
-        }
-      ],
+      items: Store.fetch(),// 疑问并不需要:Store.fetch() == null ? []: Store.fetch()
+      // [
+      //   {
+      //     label: 'coding',
+      //     isFinished: false
+      //   },
+      //   {
+      //     label: 'walking',
+      //     isFinished: true
+      //   }
+      // ],
       pClass: 'myP',
       newItem: '',
-      watchTest: 'watchTest'
+      watchTest: 'change to print items'
     }
   },
   watch: {
     watchTest: {
        handler: function(val,oldVal){
-        console.log("val="+val+",oldVal="+oldVal);
+       // console.log("val="+val+",oldVal="+oldVal);
+         console.log("items: "+JSON.stringify(this.items));
       }
     },
     items: {
