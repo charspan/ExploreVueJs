@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- app-1 -->
+    <!-- 打开你的浏览器的控制台，并修改 app.message，你将看到上例相应地更新。 -->
+    <div id="app-1">
+        {{ message }}
+    </div>
+    <script type="text/javascript">
+    var app = new Vue({
+        el: '#app-1',
+        data: {
+            message: 'Hello Vue!'
+        },
+        created: function() {
+            // `this` 指向 vm 实例
+            console.log('message is: ' + this.message)
+        }
+    })
+    </script>
+    <!-- app-2 -->
+    <!-- 你再次打开浏览器的控制台输入 app2.message = 'some new message'，你就会再一次看到这个绑定了title属性的HTML已经进行了更新。 -->
+    <div id="app-2">
+        <span v-bind:title="message">
+    Hover your mouse over me for a few seconds to see my dynamically bound title!
+  </span>
+    </div>
+    <script type="text/javascript">
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: 'You loaded this page on ' + new Date()
+        }
+    })
+    </script>
+    <!-- app-3 -->
+    <!-- 继续在控制台设置 app3.seen = false，你会发现 “Now you see me” 消失了。 -->
+    <div id="app-3">
+        <p v-if="seen">Now you see me</p>
+    </div>
+    <script type="text/javascript">
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    })
+    </script>
+    <!-- app-4 -->
+    <!-- 在控制台里，输入 app4.todos.push({ text: 'New item' })。你会发现列表中多了一栏新内容。
+     输入 app4.todos.pop() 你会发现列表中少了了一栏新内容。-->
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+    <script type="text/javascript">
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [{
+                text: 'Learn JavaScript'
+            }, {
+                text: 'Learn Vue'
+            }, {
+                text: 'Build something awesome'
+            }]
+        }
+    })
+    </script>
+    <!-- app-5 -->
+    <!-- 在 reverseMessage 方法中，我们在没有接触 DOM 的情况下更新了应用的状态 - 所有的 DOM 操作都由 Vue 来处理，你写的代码只需要关注基本逻辑。 -->
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse Message</button>
+    </div>
+    <script type="text/javascript">
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function() {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    })
+    </script>
+    <!-- app-6 -->
+    <!-- Vue 也提供了 v-model 指令，它使得在表单输入和应用状态中做双向数据绑定变得非常轻巧。 -->
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+    </div>
+    <script type="text/javascript">
+    var app6 = new Vue({
+        el: '#app-6',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+    </script>
+    <!-- app-7 -->
+    <!-- 我们应该将数据从父作用域传到子组件。让我们来修改一下组件的定义，使得它能够接受一个 prop 字段：
+    现在，我们可以使用 v-bind 指令将 todo 传到每一个重复的组件中： -->
+    <div id="app-7">
+        <ol>
+            <!-- Now we provide each todo-item with the todo object    -->
+            <!-- it's representing, so that its content can be dynamic -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+    <script type="text/javascript">
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            groceryList: [{
+                text: 'Vegetables'
+            }, {
+                text: 'Cheese'
+            }, {
+                text: 'Whatever else humans are supposed to eat'
+            }]
+        }
+    })
+    </script>
+    <!-- app-8 -->
+    <div id="demo">{{ fullName }}</div>
+    <script type="text/javascript">
+    // var vm = new Vue({
+    //   el: '#demo',
+    //   data: {
+    //     firstName: 'Foo',
+    //     lastName: 'Bar',
+    //     fullName: 'Foo Bar'
+    //   },
+    //   watch: {
+    //     firstName: function (val) {
+    //       this.fullName = val + ' ' + this.lastName
+    //     },
+    //     lastName: function (val) {
+    //       this.fullName = this.firstName + ' ' + val
+    //     }
+    //   }
+    // })
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar'
+        },
+        computed: {
+            fullName: function() {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+    </script>
+    <!-- app-9 -->
+    <script type="text/javascript">
+    </script>
+    <!-- app-10 -->
+    <script type="text/javascript">
+    </script>
+    <!-- app-11 -->
+    <script type="text/javascript">
+    </script>
+    <!-- app-12 -->
+    <!-- app-13 -->
+    <!-- app-14 -->
+    <!-- app-15 -->
+</body>
+
+</html>

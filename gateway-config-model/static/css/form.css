@@ -1,0 +1,64 @@
+body,
+table,
+tr,
+td,
+th,
+tbody,
+tfoot,
+thead,
+p,
+ul,
+li,
+div,
+textarea,
+INPUT,
+SELECT,
+button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000000;
+    scrollbar-face-color: #164781;
+    scrollbar-arrow-color: #ffffff;
+    margin: 0px;
+}
+
+INPUT,
+SELECT,
+TEXTAREA {
+    background-image: url(../image/form-input.png);
+    ;
+    background-repeat: no-repeat;
+    padding: 0 0 0 10px;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.objcode {
+    width: 550px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+
+.objcode p {
+    width: 500px;
+    height: 30px;
+    float: left;
+    display: block;
+    margin-left: 10px;
+}
+
+.ul_1 {
+    width: 110px;
+    min-height: 30px;
+}
+
+.ul_2 {
+    width: 400px;
+    min-height: 30px;
+}
+
+ul li {
+    float: left;
+    list-style: none;
+}
